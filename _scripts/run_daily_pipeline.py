@@ -388,10 +388,10 @@ li.report-item a:hover { background:#f0f3f7; color:#0b57d0; }
 <div class="container">
   <h1>Med &amp; Tech — Daily Check Campagne</h1>
   <p class="subtitle">Archivio storico giornaliero · campagne Meta Lead Ads · Open Day Total Lift / Total Sculpt</p>
-  <div class="tagline">Snapshot giornalieri generati automaticamente da <strong>FMM Consulting</strong>. Ogni report è una fotografia statica dei dati Windsor.ai al momento della generazione, con semafori CPL, trend orario e indicazioni operative.</div>
+  <div class="tagline">Snapshot giornalieri generati automaticamente da <strong>Francesco Maria Mosca</strong>. Ogni report è una fotografia statica dei dati Windsor.ai al momento della generazione, con semafori CPL, trend orario e indicazioni operative.</div>
   <div class="section-label">Report disponibili</div>
 {REPORT_LIST_HTML}
-  <div class="footer">Aggiornato il {LAST_UPDATE} · <a href="https://fmmconsulting.it">FMM Consulting</a></div>
+  <div class="footer">Aggiornato il {LAST_UPDATE} · Francesco Maria Mosca</div>
 </div>
 </body>
 </html>"""

@@ -1,6 +1,6 @@
 # Med & Tech — Daily Check Campagne
 
-Snapshot statici giornalieri sulle campagne Meta Lead Ads (Total Lift / Total Sculpt) del cliente **Med & Tech**, generati e pubblicati automaticamente da [FMM Consulting](https://fmmconsulting.it).
+Snapshot statici giornalieri sulle campagne Meta Lead Ads (Total Lift / Total Sculpt) del cliente **Med & Tech**, generati e pubblicati automaticamente da Francesco Maria Mosca.
 
 **Online:** https://advfmosca.github.io/med-tech-daily-check/
 **Generazione:** scheduled task `med-tech-daily-total-lift-sculpt` ogni giorno alle ~15:00.
