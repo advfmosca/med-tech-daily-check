@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Med & Tech — Daily Check 19/05/2026</title>
+<style>
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --bg-soft: #fafafa;
+  --bg-card: #ffffff;
+  --border: #ececef;
+  --border-soft: #f4f4f5;
+  --text: #1c1c1e;
+  --text-muted: #6b6b70;
+  --text-dim: #8a8a90;
+  --red: #d93025;
+  --yellow: #f5a623;
+  --green: #1e8e3e;
+  --gray: #9a9aa0;
+  --black: #1a1a1a;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--bg); }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  line-height: 1.45;
+}
+.wrap { max-width: 1080px; margin: 0 auto; padding: 18px 20px 60px; }
+
+h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; margin: 4px 0; text-align: center; }
+.subtitle { color: var(--text-muted); font-size: 12.5px; margin: 0 0 18px; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 8px 14px; font-size: 12px; color: var(--text-muted); background: var(--bg-soft); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; margin-bottom: 18px; }
+.legend .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+.dot-rosso  { background: var(--red); }
+.dot-giallo { background: var(--yellow); }
+.dot-verde  { background: var(--green); }
+.dot-nero   { background: var(--black); }
+
+.cards { display: flex; flex-direction: column; gap: 12px; }
+.card { background: var(--bg-card); border: 1px solid var(--border); border-left-width: 4px; border-radius: 12px; padding: 14px 16px; }
+.card.rosso  { border-left-color: var(--red); }
+.card.giallo { border-left-color: var(--yellow); }
+.card.verde  { border-left-color: var(--green); }
+.card.nero   { border-left-color: var(--black); }
+.card-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.tag { display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: .04em; padding: 2px 8px; border-radius: 999px; color: #fff; flex-shrink: 0; }
+.tag.rosso  { background: var(--red); }
+.tag.giallo { background: var(--yellow); color: var(--text); }
+.tag.verde  { background: var(--green); }
+.tag.nero   { background: var(--black); }
+.camp-name { font-weight: 700; font-size: 14px; flex: 1; }
+.meta { color: var(--text-muted); font-size: 12.5px; margin-top: 6px; }
+.rationale { font-size: 13px; margin-top: 4px; }
+.reading { font-size: 12.5px; color: #2c2c2c; margin-top: 8px; line-height: 1.55; padding: 9px 11px; background: var(--bg-soft); border-radius: 8px; }
+.path { font-size: 12.5px; color: var(--text); margin-top: 6px; line-height: 1.55; background: var(--bg-soft); border-left: 3px solid #0b57d0; padding: 8px 12px; border-radius: 8px; }
+.path b { color: #0b57d0; font-weight: 700; }
+.path.urgent { border-left-color: var(--red); } .path.urgent b { color: var(--red); }
+.path.soft   { border-left-color: var(--green); } .path.soft   b { color: var(--green); }
+.freq-badge { display: inline-block; font-size: 10.5px; font-weight: 600; padding: 1px 7px; border-radius: 999px; margin-left: 4px; vertical-align: middle; }
+.freq-healthy { background: #d1fadf; color: #14532d; }
+.freq-monitor { background: var(--border); color: var(--text-muted); }
+.freq-alta    { background: #ffedd5; color: #9a3412; }
+.freq-critica { background: #fee2e2; color: #991b1b; }
+.empty { color: var(--text-dim); font-style: italic; padding: 16px 0; }
+
+.section-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin: 0 0 10px; }
+.report-list { display: flex; flex-direction: column; gap: 4px; list-style: none; padding: 0; }
+.report-item { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border-radius: 10px; text-decoration: none; color: var(--text); border: 1px solid var(--border); background: #fff; transition: background .15s, border-color .15s; }
+.report-item a { display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit; gap: 10px; }
+.report-item:hover { background: var(--bg-soft); border-color: #d2d2d7; }
+.report-item .day-name { font-weight: 600; font-size: 13.5px; }
+.report-item .day-counts { font-size: 12.5px; color: var(--text-muted); margin-left: 12px; font-variant-numeric: tabular-nums; }
+.report-item .day-counts .c-rosso  { color: var(--red);   font-weight: 700; }
+.report-item .day-counts .c-giallo { color: #b88a00;      font-weight: 700; }
+.report-item .day-counts .c-verde  { color: var(--green); font-weight: 700; }
+.report-item .day-counts .c-nero   { color: #444;         font-weight: 700; }
+.report-item .arrow { margin-left: auto; color: var(--text-dim); font-size: 18px; }
+
+.signature { font-size: 11.5px; color: var(--text-dim); margin-top: 28px; padding-top: 14px; border-top: 1px solid var(--border-soft); text-align: center; letter-spacing: 0.02em; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Med &amp; Tech — Riepilogo e Check Campagne ATTIVE</h1>
+<div class="subtitle">Snapshot del 19/05/2026 · cutoff orario 15:59 Europe/Rome · 12 campagne con spend attivo ieri + oggi</div>
+
+<div class="legend">
+  <span><span class="dot dot-verde"></span><b>VERDE</b> — in linea o pi&ugrave; basso</span>
+  <span><span class="dot dot-giallo"></span><b>GIALLO</b> — lieve crescita (entro +50%)</span>
+  <span><span class="dot dot-rosso"></span><b>ROSSO</b> — 0 lead o CPL &gt; 50% sopra media</span>
+  <span><span class="dot dot-nero"></span><b>NERO</b> — nessuna spesa ieri</span>
+</div>
+
+<div class="cards">
+<div class="card rosso">
+  <div class="card-head">
+    <span class="tag rosso">ROSSO</span>
+    <div class="camp-name">Open Day - Total Lift - FARMACIA MAURO OPEN DAY DOTT.SSA MARCELLA OLIVETI</div>
+  </div>
+  <div class="meta">Partita: 06/05/2026 · termina oggi</div>
+  <div class="rationale">CPL 36,04 € vs media 21,71 € (+66,0%)</div>
+  <div class="meta">Lead OGGI alle 15:59: <b>1</b> (ieri stesso orario 0)</div>
+  <div class="meta">Trend ultimi 3 giorni: <b>1,33</b> lead media giornaliera · Frequency 7gg: <b>1,61</b><span class="freq-badge freq-healthy">healthy</span></div>
+  <div class="reading">Ieri CPL 36,04 €, sopra soglia (+66,0% sulla media 21,71 €), e oggi a quest&#x27;ora siamo già sopra ieri di 1 lead.</div>
+  <div class="path soft"><b>Cosa faremo per migliorare le performance:</b> Campagna in chiusura: lasciare correre fino all&#x27;end date senza modifiche e archiviare i learning per la prossima edizione.</div>
+</div>
+<div class="card rosso">
+  <div class="card-head">
+    <span class="tag rosso">ROSSO</span>
+    <div class="camp-name">Open Day - Total Lift -  STUDIO DELLA DOTT. SSA BRUNA ARGENTI</div>
+  </div>
+  <div class="meta">Partita: 07/05/2026 · 1gg alla fine</div>
+  <div class="rationale">CPL 10,87 € vs media 5,52 € (+96,9%)</div>
+  <div class="meta">Lead OGGI alle 15:59: <b>2</b> (ieri stesso orario 2)</div>
+  <div class="meta">Trend ultimi 3 giorni: <b>2,33</b> lead media giornaliera · Frequency 7gg: <b>1,27</b><span class="freq-badge freq-healthy">healthy</span></div>
+  <div class="reading">Ieri CPL 10,87 €, sopra soglia (+96,9% sulla media 5,52 €), e oggi sta replicando lo stesso ritmo di ieri (2 lead).</div>
+  <div class="path urgent"><b>Cosa faremo per migliorare le performance:</b> Volumi stagnanti con CPL fuori soglia: avviare A/B test su nuova variante creativa entro oggi e rivedere targeting.</div>
+</div>
+<div class="card rosso">
+  <div class="card-head">
+    <span class="tag rosso">ROSSO</span>
+    <div class="camp-name">Open Day - Total Lift - DOTT.SSA DEL VESCOVO</div>
+  </div>
+  <div class="meta">Partita: 14/05/2026 · 8gg alla fine</div>
+  <div class="rationale">CPL 18,54 € vs media 9,73 € (+90,6%)</div>
+  <div class="meta">Lead OGGI alle 15:59: <b>0</b> (ieri stesso orario 0)</div>
+  <div class="meta">Trend ultimi 3 giorni: <b>0,67</b> lead media giornaliera · Frequency 7gg: <b>1,52</b><span class="freq-badge freq-healthy">healthy</span></div>
+  <div class="reading">Ieri CPL 18,54 €, sopra soglia (+90,6% sulla media 9,73 €), e oggi non sono ancora arrivati lead (come ieri stesso orario).</div>
+  <div class="path urgent"><b>Cosa faremo per migliorare le performance:</b> Performance critica: zero lead oggi e ieri stesso orario. Sostituire creatività entro fine giornata e rivedere copy/headline del modulo Lead Ad.</div>
+</div>
+<div class="card giallo">
+  <div class="card-head">
+    <span class="tag giallo">GIALLO</span>
+    <div class="camp-name">Open Day - Total Lift - DR ZUFFADA E NARDI</div>
+  </div>
+  <div class="meta">Partita: 07/05/2026 · 1gg alla fine</div>
+  <div class="rationale">CPL 13,54 € vs media 9,42 € (+43,7%)</div>
+  <div class="meta">Lead OGGI alle 15:59: <b>4</b> (ieri stesso orario 0)</div>
+  <div class="meta">Trend ultimi 3 giorni: <b>3,00</b> lead media giornaliera · Frequency 7gg: <b>1,18</b><span class="freq-badge freq-healthy">healthy</span></div>
+  <div class="reading">Ieri CPL 13,54 €, leggermente sopra media (+43,7% su 9,42 €), e oggi a quest&#x27;ora siamo già sopra ieri di 4 lead.</div>
+  <div class="path soft"><b>Cosa faremo per migliorare le performance:</b> Lasciare correre con monitoraggio: il trend orario si sta autocorreggendo. Refresh solo se domani il CPL peggiora.</div>
+</div>
+<div class="card giallo">
+  <div class="card-head">
+    <span class="tag giallo">GIALLO</span>
+    <div class="camp-name">Open Day - Total Lift - DOTT.SSA TIZIANA MASTROMARINO</div>
+  </div>
+  <div class="meta">Partita: 14/05/2026 · 8gg alla fine</div>
+  <div class="rationale">CPL 7,79 € vs media 5,21 € (+49,4%)</div>
+  <div class="meta">Lead OGGI alle 15:59: <b>2</b> (ieri stesso orario 1)</div>
+  <div class="meta">Trend ultimi 3 giorni: <b>2,67</b> lead media giornaliera · Frequency 7gg: <b>1,50</b><span class="freq-badge freq-healthy">healthy</span></div>
+  <div class="reading">Ieri CPL 7,79 €, leggermente sopra media (+49,4% su 5,21 €), e oggi a quest&#x27;ora siamo già sopra ieri di 1 lead.</div>
+  <div class="path soft"><b>Cosa faremo per migliorare le performance:</b> Lasciare correre con monitoraggio: il trend orario si sta autocorreggendo. Refresh solo se domani il CPL peggiora.</div>
+</div>
+<div class="card giallo">
+  <div class="card-head">
+    <span class="tag giallo">GIALLO</span>
+    <div class="camp-name">Open Day - Total Lift - DOTT. LO GIUDICE</div>
+  </div>
+  <div class="meta">Partita: 15/05/2026 · 9gg alla fine</div>
+  <div class="rationale">CPL 2,62 € vs media 2,58 € (+1,5%)</div>
+  <div class="meta">Lead OGGI alle 15:59: <b>4</b> (ieri stesso orario 5)</div>
+  <div class="meta">Trend ultimi 3 giorni: <b>8,33</b> lead media giornaliera · Frequency 7gg: <b>1,70</b><span class="freq-badge freq-healthy">healthy</span></div>
+  <div class="reading">Ieri CPL 2,62 €, leggermente sopra media (+1,5% su 2,58 €), ma oggi a quest&#x27;ora siamo sotto ieri di 1 lead.</div>
+  <div class="path "><b>Cosa faremo per migliorare le performance:</b> Testare una nuova variante creativa (visual o headline diverso) per riportare il CPL nella soglia di media; tenere il targeting invariato per ora.</div>
+</div>
+<div class="card giallo">
+  <div class="card-head">
+    <span class="tag giallo">GIALLO</span>
+    <div class="camp-name">Open Day - Total Lift - DOTT. FABIO SCUDERI</div>
+  </div>
+  <div class="meta">Partita: 16/05/2026 · 10gg alla fine</div>
+  <div class="rationale">CPL 4,52 € vs media 3,08 € (+46,9%)</div>
+  <div class="meta">Lead OGGI alle 15:59: <b>2</b> (ieri stesso orario 3)</div>
+  <div class="meta">Trend ultimi 3 giorni: <b>4,67</b> lead media giornaliera · Frequency 7gg: <b>1,57</b><span class="freq-badge freq-healthy">healthy</span></div>
+  <div class="reading">Ieri CPL 4,52 €, leggermente sopra media (+46,9% su 3,08 €), ma oggi a quest&#x27;ora siamo sotto ieri di 1 lead.</div>
+  <div class="path "><b>Cosa faremo per migliorare le performance:</b> Testare una nuova variante creativa (visual o headline diverso) per riportare il CPL nella soglia di media; tenere il targeting invariato per ora.</div>
+</div>
+<div class="card verde">
+  <div class="card-head">
+    <span class="tag verde">VERDE</span>
+    <div class="camp-name">Open Day - Total Lift - STUDIO DEL DOTT. MATTEO PARADISO</div>
+  </div>
+  <div class="meta">Partita: 16/04/2026 · 2gg alla fine</div>
+  <div class="rationale">CPL 9,91 € vs media 12,18 €</div>
+  <div class="meta">Lead OGGI alle 15:59: <b>1</b> (ieri stesso orario 2)</div>
+  <div class="meta">Trend ultimi 3 giorni: <b>1,33</b> lead media giornaliera · Frequency 7gg: <b>1,41</b><span class="freq-badge freq-healthy">healthy</span></div>
+  <div class="reading">Ieri CPL 9,91 €, in linea con la media storica di 12,18 €, ma oggi a quest&#x27;ora siamo sotto ieri di 1 lead.</div>
+  <div class="path "><b>Cosa faremo per migliorare le performance:</b> Setup corretto, monitorare. Se il calo orario prosegue anche domani, refresh leggero del visual senza toccare il targeting.</div>
+</div>
+<div class="card verde">
+  <div class="card-head">
+    <span class="tag verde">VERDE</span>
+    <div class="camp-name">Open Day - Total Lift - DOTT.SSA ROSALBA DI NATALE</div>
+  </div>
+  <div class="meta">Partita: 11/05/2026 · 5gg alla fine</div>
+  <div class="rationale">CPL 10,23 € vs media 13,57 €</div>
+  <div class="meta">Lead OGGI alle 15:59: <b>2</b> (ieri stesso orario 0)</div>
+  <div class="meta">Trend ultimi 3 giorni: <b>1,33</b> lead media giornaliera · Frequency 7gg: <b>1,58</b><span class="freq-badge freq-healthy">healthy</span></div>
+  <div class="reading">Ieri CPL 10,23 €, in linea con la media storica di 13,57 €, e oggi a quest&#x27;ora siamo già sopra ieri di 2 lead.</div>
+  <div class="path soft"><b>Cosa faremo per migliorare le performance:</b> Mantenere setup invariato e, se il budget lo permette, alzare leggermente lo spending giornaliero per scalare il momentum.</div>
+</div>
+<div class="card verde">
+  <div class="card-head">
+    <span class="tag verde">VERDE</span>
+    <div class="camp-name">Open Day - Total Lift - STUDIO DOTT.SSA FRANCESCA PES</div>
+  </div>
+  <div class="meta">Partita: 12/05/2026 · 6gg alla fine</div>
+  <div class="rationale">CPL 5,09 € vs media 6,99 €</div>
+  <div class="meta">Lead OGGI alle 15:59: <b>1</b> (ieri stesso orario 2)</div>
+  <div class="meta">Trend ultimi 3 giorni: <b>2,33</b> lead media giornaliera · Frequency 7gg: <b>1,48</b><span class="freq-badge freq-healthy">healthy</span></div>
+  <div class="reading">Ieri CPL 5,09 €, in linea con la media storica di 6,99 €, ma oggi a quest&#x27;ora siamo sotto ieri di 1 lead.</div>
+  <div class="path "><b>Cosa faremo per migliorare le performance:</b> Setup corretto, monitorare. Se il calo orario prosegue anche domani, refresh leggero del visual senza toccare il targeting.</div>
+</div>
+<div class="card verde">
+  <div class="card-head">
+    <span class="tag verde">VERDE</span>
+    <div class="camp-name">Open Day - Total Lift - STUDIO DOTT. RICCIARDI LUMINA</div>
+  </div>
+  <div class="meta">Partita: 13/05/2026 · 7gg alla fine</div>
+  <div class="rationale">CPL 16,82 € vs media 20,25 €</div>
+  <div class="meta">Lead OGGI alle 15:59: <b>0</b> (ieri stesso orario 1)</div>
+  <div class="meta">Trend ultimi 3 giorni: <b>0,33</b> lead media giornaliera · Frequency 7gg: <b>1,65</b><span class="freq-badge freq-healthy">healthy</span></div>
+  <div class="reading">Ieri CPL 16,82 €, in linea con la media storica di 20,25 €, ma oggi a quest&#x27;ora siamo sotto ieri di 1 lead.</div>
+  <div class="path "><b>Cosa faremo per migliorare le performance:</b> Setup corretto, monitorare. Se il calo orario prosegue anche domani, refresh leggero del visual senza toccare il targeting.</div>
+</div>
+<div class="card verde">
+  <div class="card-head">
+    <span class="tag verde">VERDE</span>
+    <div class="camp-name">Open Day - Total Lift - DR. RICAPITO EZIO</div>
+  </div>
+  <div class="meta">Partita: 15/05/2026 · 9gg alla fine</div>
+  <div class="rationale">CPL 3,27 € vs media 3,92 €</div>
+  <div class="meta">Lead OGGI alle 15:59: <b>1</b> (ieri stesso orario 6)</div>
+  <div class="meta">Trend ultimi 3 giorni: <b>5,67</b> lead media giornaliera · Frequency 7gg: <b>1,49</b><span class="freq-badge freq-healthy">healthy</span></div>
+  <div class="reading">Ieri CPL 3,27 €, in linea con la media storica di 3,92 €, ma oggi a quest&#x27;ora siamo sotto ieri di 5 lead.</div>
+  <div class="path "><b>Cosa faremo per migliorare le performance:</b> Setup corretto, monitorare. Se il calo orario prosegue anche domani, refresh leggero del visual senza toccare il targeting.</div>
+</div>
+</div>
+
+<div class="signature">© Francesco Maria Mosca 2026</div>
+</div>
+</body>
+</html>
