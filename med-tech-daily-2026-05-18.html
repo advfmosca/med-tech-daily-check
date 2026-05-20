@@ -31,8 +31,48 @@ body {
 }
 .wrap { max-width: 1080px; margin: 0 auto; padding: 18px 20px 60px; }
 
-h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; margin: 4px 0; text-align: center; }
-.subtitle { color: var(--text-muted); font-size: 12.5px; margin: 0 0 18px; }
+.brand-header { text-align: center; margin: 4px 0 14px; padding: 14px 18px; background: var(--bg-soft); border: 1px solid var(--border); border-radius: 12px; }
+h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 4px; }
+.subtitle { color: var(--text-muted); font-size: 12.5px; margin: 0 0 0; }
+
+/* KPI tiles top */
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin-bottom: 14px; }
+.kpi { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 10px; padding: 13px 15px; min-width: 0; }
+.kpi .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
+.kpi .value { font-size: 24px; font-weight: 700; line-height: 1.1; color: #0f0f10; font-variant-numeric: tabular-nums; }
+.kpi.total { background: #1c1c1e; border-color: #1c1c1e; }
+.kpi.total .label { color: #b8b8bf; }
+.kpi.total .value { color: #fff; }
+
+/* Semafori grid 4 colonne — CLICCABILI come filtro */
+.sem-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 14px; }
+.sem-grid .kpi { padding: 11px 13px; cursor: pointer; user-select: none; transition: transform .15s, box-shadow .15s, opacity .15s; }
+.sem-grid .kpi:hover { transform: translateY(-1px); box-shadow: 0 2px 6px rgba(0,0,0,.08); }
+.sem-grid .kpi.active-filter { outline: 3px solid #1c1c1e; outline-offset: -3px; }
+.sem-grid.has-active .kpi:not(.active-filter) { opacity: 0.42; }
+.sem-grid .kpi.rosso  { background: #fee2e2; border-color: #fca5a5; }
+.sem-grid .kpi.rosso  .label { color: #991b1b; }
+.sem-grid .kpi.rosso  .value { color: #991b1b; }
+.sem-grid .kpi.giallo { background: #ffedd5; border-color: #fed7aa; }
+.sem-grid .kpi.giallo .label { color: #9a3412; }
+.sem-grid .kpi.giallo .value { color: #9a3412; }
+.sem-grid .kpi.verde  { background: #d1fadf; border-color: #86efac; }
+.sem-grid .kpi.verde  .label { color: #14532d; }
+.sem-grid .kpi.verde  .value { color: #14532d; }
+.sem-grid .kpi.nero   { background: #1a1a1a; border-color: #1a1a1a; }
+.sem-grid .kpi.nero   .label { color: #b8b8bf; }
+.sem-grid .kpi.nero   .value { color: #fff; }
+
+/* Search bar */
+.search-bar { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; padding: 10px 14px; background: var(--bg-soft); border: 1px solid var(--border); border-radius: 10px; flex-wrap: wrap; }
+.search-bar .search-ico { font-size: 14px; color: var(--text-muted); flex-shrink: 0; }
+.search-bar input[type="search"] { flex: 1; font: inherit; font-size: 13px; padding: 6px 8px; border: 0; background: transparent; color: var(--text); outline: none; min-width: 160px; }
+.search-bar input[type="search"]::placeholder { color: var(--text-dim); }
+.search-bar .filter-count { font-size: 11.5px; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.search-bar .clear-btn { font: inherit; font-size: 11px; padding: 4px 10px; border-radius: 999px; border: 1px solid #d2d2d7; background: #fff; color: var(--text-muted); cursor: pointer; flex-shrink: 0; }
+.search-bar .clear-btn:hover { background: #f5f5f7; color: var(--text); }
+.search-bar .clear-btn.hidden { display: none; }
+.empty-result { padding: 20px; text-align: center; color: var(--text-dim); font-style: italic; font-size: 13px; background: var(--bg-soft); border-radius: 10px; border: 1px dashed var(--border); }
 
 .legend { display: flex; flex-wrap: wrap; gap: 8px 14px; font-size: 12px; color: var(--text-muted); background: var(--bg-soft); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; margin-bottom: 18px; }
 .legend .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
@@ -68,10 +108,11 @@ h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; margin: 4px 0; 
 .freq-critica { background: #fee2e2; color: #991b1b; }
 .empty { color: var(--text-dim); font-style: italic; padding: 16px 0; }
 
+/* Index list */
 .section-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin: 0 0 10px; }
 .report-list { display: flex; flex-direction: column; gap: 4px; list-style: none; padding: 0; }
+.report-list a, .report-item a { display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit; gap: 10px; }
 .report-item { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border-radius: 10px; text-decoration: none; color: var(--text); border: 1px solid var(--border); background: #fff; transition: background .15s, border-color .15s; }
-.report-item a { display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit; gap: 10px; }
 .report-item:hover { background: var(--bg-soft); border-color: #d2d2d7; }
 .report-item .day-name { font-weight: 600; font-size: 13.5px; }
 .report-item .day-counts { font-size: 12.5px; color: var(--text-muted); margin-left: 12px; font-variant-numeric: tabular-nums; }
@@ -86,9 +127,30 @@ h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; margin: 4px 0; 
 </head>
 <body>
 <div class="wrap">
+  <div class="brand-header">
   <h1>Med &amp; Tech — Riepilogo e Check Campagne ATTIVE</h1>
-<div class="subtitle">Snapshot del 18/05/2026 · cutoff orario 15:59 Europe/Rome · 13 campagne con spend attivo ieri + oggi</div>
+  <p class="subtitle">Snapshot del 18/05/2026 · cutoff orario 15:59 Europe/Rome · 13 campagne con spend attivo ieri + oggi</p>
+</div>
 
+
+<div class="kpis">
+  <div class="kpi"><div class="label">Campagne attive</div><div class="value">13</div></div>
+  <div class="kpi total"><div class="label">Lead OGGI</div><div class="value">17</div></div>
+  <div class="kpi"><div class="label">Lead IERI (stesso orario)</div><div class="value">28</div></div>
+  <div class="kpi"><div class="label">Δ Lead</div><div class="value">-11</div></div>
+</div>
+<div class="sem-grid" id="sem-grid">
+  <div class="kpi rosso"  data-filter="rosso"><div class="label">ROSSO</div><div class="value">6</div></div>
+  <div class="kpi giallo" data-filter="giallo"><div class="label">GIALLO</div><div class="value">4</div></div>
+  <div class="kpi verde"  data-filter="verde"><div class="label">VERDE</div><div class="value">3</div></div>
+  <div class="kpi nero"   data-filter="nero"><div class="label">NERO</div><div class="value">0</div></div>
+</div>
+<div class="search-bar">
+  <span class="search-ico">🔎</span>
+  <input id="search-input" type="search" autocomplete="off" spellcheck="false" placeholder="Cerca campagna o cliente…" />
+  <span class="filter-count" id="filter-count"></span>
+  <button type="button" class="clear-btn hidden" id="search-clear" title="Pulisci">Pulisci</button>
+</div>
 <div class="legend">
   <span><span class="dot dot-verde"></span><b>VERDE</b> — in linea o pi&ugrave; basso</span>
   <span><span class="dot dot-giallo"></span><b>GIALLO</b> — lieve crescita (entro +50%)</span>
@@ -97,157 +159,144 @@ h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; margin: 4px 0; 
 </div>
 
 <div class="cards">
-<div class="card rosso">
+<div class="card rosso" data-name="open day - total lift - studio dr renato casadei e dott ssa virginia casadei" data-color="rosso">
   <div class="card-head">
     <span class="tag rosso">ROSSO</span>
     <div class="camp-name">Open Day - Total Lift - STUDIO DR RENATO CASADEI E DOTT SSA VIRGINIA CASADEI</div>
   </div>
   <div class="meta">Partita: 05/05/2026 · termina oggi</div>
-  <div class="rationale">CPL 11,97 € vs media 7,76 € (+54,3%)</div>
   <div class="meta">Lead OGGI alle 15:59: <b>0</b> (ieri stesso orario 2)</div>
   <div class="meta">Trend ultimi 3 giorni: <b>1,33</b> lead media giornaliera · Frequency 7gg: <b>1,41</b><span class="freq-badge freq-healthy">healthy</span></div>
   <div class="reading">Ieri CPL 11,97 €, sopra soglia (+54,3% sulla media 7,76 €), ma oggi a quest&#x27;ora siamo sotto ieri di 2 lead.</div>
   <div class="path soft"><b>Cosa faremo per migliorare le performance:</b> Campagna in chiusura: lasciare correre fino all&#x27;end date senza modifiche e archiviare i learning per la prossima edizione.</div>
 </div>
-<div class="card rosso">
+<div class="card rosso" data-name="open day - total lift - studio del dott. matteo paradiso" data-color="rosso">
   <div class="card-head">
     <span class="tag rosso">ROSSO</span>
     <div class="camp-name">Open Day - Total Lift - STUDIO DEL DOTT. MATTEO PARADISO</div>
   </div>
   <div class="meta">Partita: 16/04/2026 · 3gg alla fine</div>
-  <div class="rationale">CPL 23,37 € vs media 12,16 € (+92,1%)</div>
   <div class="meta">Lead OGGI alle 15:59: <b>1</b> (ieri stesso orario 0)</div>
   <div class="meta">Trend ultimi 3 giorni: <b>1,00</b> lead media giornaliera · Frequency 7gg: <b>1,42</b><span class="freq-badge freq-healthy">healthy</span></div>
   <div class="reading">Ieri CPL 23,37 €, sopra soglia (+92,1% sulla media 12,16 €), e oggi a quest&#x27;ora siamo già sopra ieri di 1 lead.</div>
   <div class="path urgent"><b>Cosa faremo per migliorare le performance:</b> Trend orario in recupero: monitorare nelle prossime 12-24h. Se domani il CPL non rientra in soglia, refresh completo della creatività.</div>
 </div>
-<div class="card rosso">
+<div class="card rosso" data-name="open day - total lift - dott.ssa rosalba di natale" data-color="rosso">
   <div class="card-head">
     <span class="tag rosso">ROSSO</span>
     <div class="camp-name">Open Day - Total Lift - DOTT.SSA ROSALBA DI NATALE</div>
   </div>
   <div class="meta">Partita: 11/05/2026 · 6gg alla fine</div>
-  <div class="rationale">0 lead, spend 20,71 €</div>
   <div class="meta">Lead OGGI alle 15:59: <b>0</b> (ieri stesso orario 0)</div>
   <div class="meta">Trend ultimi 3 giorni: <b>0,00</b> lead media giornaliera · Frequency 7gg: <b>1,63</b><span class="freq-badge freq-healthy">healthy</span></div>
   <div class="reading">Ieri 20,71 € spesi senza generare lead (media storica 17,41 €/lead), e oggi non sono ancora arrivati lead (come ieri stesso orario).</div>
   <div class="path urgent"><b>Cosa faremo per migliorare le performance:</b> Performance critica: zero lead oggi e ieri stesso orario. Sostituire creatività entro fine giornata e rivedere copy/headline del modulo Lead Ad.</div>
 </div>
-<div class="card rosso">
+<div class="card rosso" data-name="open day - total lift - studio dott.ssa francesca pes" data-color="rosso">
   <div class="card-head">
     <span class="tag rosso">ROSSO</span>
     <div class="camp-name">Open Day - Total Lift - STUDIO DOTT.SSA FRANCESCA PES</div>
   </div>
   <div class="meta">Partita: 12/05/2026 · 7gg alla fine</div>
-  <div class="rationale">CPL 12,73 € vs media 6,97 € (+82,6%)</div>
   <div class="meta">Lead OGGI alle 15:59: <b>2</b> (ieri stesso orario 1)</div>
   <div class="meta">Trend ultimi 3 giorni: <b>2,67</b> lead media giornaliera · Frequency 7gg: <b>1,51</b><span class="freq-badge freq-healthy">healthy</span></div>
   <div class="reading">Ieri CPL 12,73 €, sopra soglia (+82,6% sulla media 6,97 €), e oggi a quest&#x27;ora siamo già sopra ieri di 1 lead.</div>
   <div class="path urgent"><b>Cosa faremo per migliorare le performance:</b> Trend orario in recupero: monitorare nelle prossime 12-24h. Se domani il CPL non rientra in soglia, refresh completo della creatività.</div>
 </div>
-<div class="card rosso">
+<div class="card rosso" data-name="open day - total lift - studio dott. ricciardi lumina" data-color="rosso">
   <div class="card-head">
     <span class="tag rosso">ROSSO</span>
     <div class="camp-name">Open Day - Total Lift - STUDIO DOTT. RICCIARDI LUMINA</div>
   </div>
   <div class="meta">Partita: 13/05/2026 · 8gg alla fine</div>
-  <div class="rationale">0 lead, spend 21,56 €</div>
   <div class="meta">Lead OGGI alle 15:59: <b>0</b> (ieri stesso orario 0)</div>
   <div class="meta">Trend ultimi 3 giorni: <b>0,00</b> lead media giornaliera · Frequency 7gg: <b>1,67</b><span class="freq-badge freq-healthy">healthy</span></div>
   <div class="reading">Ieri 21,56 € spesi senza generare lead (media storica 20,79 €/lead), e oggi non sono ancora arrivati lead (come ieri stesso orario).</div>
   <div class="path urgent"><b>Cosa faremo per migliorare le performance:</b> Performance critica: zero lead oggi e ieri stesso orario. Sostituire creatività entro fine giornata e rivedere copy/headline del modulo Lead Ad.</div>
 </div>
-<div class="card rosso">
+<div class="card rosso" data-name="open day - total lift - dott.ssa del vescovo" data-color="rosso">
   <div class="card-head">
     <span class="tag rosso">ROSSO</span>
     <div class="camp-name">Open Day - Total Lift - DOTT.SSA DEL VESCOVO</div>
   </div>
   <div class="meta">Partita: 14/05/2026 · 9gg alla fine</div>
-  <div class="rationale">CPL 26,66 € vs media 9,17 € (+190,7%)</div>
   <div class="meta">Lead OGGI alle 15:59: <b>0</b> (ieri stesso orario 1)</div>
   <div class="meta">Trend ultimi 3 giorni: <b>1,00</b> lead media giornaliera · Frequency 7gg: <b>1,52</b><span class="freq-badge freq-healthy">healthy</span></div>
   <div class="reading">Ieri CPL 26,66 €, sopra soglia (+190,7% sulla media 9,17 €), ma oggi a quest&#x27;ora siamo sotto ieri di 1 lead.</div>
   <div class="path urgent"><b>Cosa faremo per migliorare le performance:</b> Intervento immediato: sostituire creatività (nuovo visual + nuovo headline su un angle diverso) e restringere il targeting alle audience che hanno convertito meglio nei primi giorni.</div>
 </div>
-<div class="card giallo">
+<div class="card giallo" data-name="open day - total lift -  studio della dott. ssa bruna argenti" data-color="giallo">
   <div class="card-head">
     <span class="tag giallo">GIALLO</span>
     <div class="camp-name">Open Day - Total Lift -  STUDIO DELLA DOTT. SSA BRUNA ARGENTI</div>
   </div>
   <div class="meta">Partita: 07/05/2026 · 2gg alla fine</div>
-  <div class="rationale">CPL 6,82 € vs media 5,30 € (+28,9%)</div>
   <div class="meta">Lead OGGI alle 15:59: <b>2</b> (ieri stesso orario 1)</div>
   <div class="meta">Trend ultimi 3 giorni: <b>2,33</b> lead media giornaliera · Frequency 7gg: <b>1,29</b><span class="freq-badge freq-healthy">healthy</span></div>
   <div class="reading">Ieri CPL 6,82 €, leggermente sopra media (+28,9% su 5,30 €), e oggi a quest&#x27;ora siamo già sopra ieri di 1 lead.</div>
   <div class="path soft"><b>Cosa faremo per migliorare le performance:</b> Lasciare correre con monitoraggio: il trend orario si sta autocorreggendo. Refresh solo se domani il CPL peggiora.</div>
 </div>
-<div class="card giallo">
+<div class="card giallo" data-name="open day - total lift - dott.ssa tiziana mastromarino" data-color="giallo">
   <div class="card-head">
     <span class="tag giallo">GIALLO</span>
     <div class="camp-name">Open Day - Total Lift - DOTT.SSA TIZIANA MASTROMARINO</div>
   </div>
   <div class="meta">Partita: 14/05/2026 · 9gg alla fine</div>
-  <div class="rationale">CPL 5,45 € vs media 5,17 € (+5,5%)</div>
   <div class="meta">Lead OGGI alle 15:59: <b>1</b> (ieri stesso orario 4)</div>
   <div class="meta">Trend ultimi 3 giorni: <b>2,67</b> lead media giornaliera · Frequency 7gg: <b>1,51</b><span class="freq-badge freq-healthy">healthy</span></div>
   <div class="reading">Ieri CPL 5,45 €, leggermente sopra media (+5,5% su 5,17 €), ma oggi a quest&#x27;ora siamo sotto ieri di 3 lead.</div>
   <div class="path "><b>Cosa faremo per migliorare le performance:</b> Testare una nuova variante creativa (visual o headline diverso) per riportare il CPL nella soglia di media; tenere il targeting invariato per ora.</div>
 </div>
-<div class="card giallo">
+<div class="card giallo" data-name="open day - total lift - dr. ricapito ezio" data-color="giallo">
   <div class="card-head">
     <span class="tag giallo">GIALLO</span>
     <div class="camp-name">Open Day - Total Lift - DR. RICAPITO EZIO</div>
   </div>
   <div class="meta">Partita: 15/05/2026 · 10gg alla fine</div>
-  <div class="rationale">CPL 4,75 € vs media 3,61 € (+31,5%)</div>
   <div class="meta">Lead OGGI alle 15:59: <b>5</b> (ieri stesso orario 4)</div>
   <div class="meta">Trend ultimi 3 giorni: <b>7,00</b> lead media giornaliera · Frequency 7gg: <b>1,48</b><span class="freq-badge freq-healthy">healthy</span></div>
   <div class="reading">Ieri CPL 4,75 €, leggermente sopra media (+31,5% su 3,61 €), e oggi a quest&#x27;ora siamo già sopra ieri di 1 lead.</div>
   <div class="path soft"><b>Cosa faremo per migliorare le performance:</b> Lasciare correre con monitoraggio: il trend orario si sta autocorreggendo. Refresh solo se domani il CPL peggiora.</div>
 </div>
-<div class="card giallo">
+<div class="card giallo" data-name="open day - total lift - dott. fabio scuderi" data-color="giallo">
   <div class="card-head">
     <span class="tag giallo">GIALLO</span>
     <div class="camp-name">Open Day - Total Lift - DOTT. FABIO SCUDERI</div>
   </div>
   <div class="meta">Partita: 16/05/2026 · 11gg alla fine</div>
-  <div class="rationale">CPL 2,79 € vs media 2,62 € (+6,7%)</div>
   <div class="meta">Lead OGGI alle 15:59: <b>3</b> (ieri stesso orario 4)</div>
   <div class="meta">Trend ultimi 3 giorni: <b>5,67</b> lead media giornaliera · Frequency 7gg: <b>1,58</b><span class="freq-badge freq-healthy">healthy</span></div>
   <div class="reading">Ieri CPL 2,79 €, leggermente sopra media (+6,7% su 2,62 €), ma oggi a quest&#x27;ora siamo sotto ieri di 1 lead.</div>
   <div class="path "><b>Cosa faremo per migliorare le performance:</b> Testare una nuova variante creativa (visual o headline diverso) per riportare il CPL nella soglia di media; tenere il targeting invariato per ora.</div>
 </div>
-<div class="card verde">
+<div class="card verde" data-name="open day - total lift - farmacia mauro open day dott.ssa marcella oliveti" data-color="verde">
   <div class="card-head">
     <span class="tag verde">VERDE</span>
     <div class="camp-name">Open Day - Total Lift - FARMACIA MAURO OPEN DAY DOTT.SSA MARCELLA OLIVETI</div>
   </div>
   <div class="meta">Partita: 06/05/2026 · 1gg alla fine</div>
-  <div class="rationale">CPL 20,11 € vs media 22,38 €</div>
   <div class="meta">Lead OGGI alle 15:59: <b>0</b> (ieri stesso orario 2)</div>
   <div class="meta">Trend ultimi 3 giorni: <b>0,67</b> lead media giornaliera · Frequency 7gg: <b>1,60</b><span class="freq-badge freq-healthy">healthy</span></div>
   <div class="reading">Ieri CPL 20,11 €, in linea con la media storica di 22,38 €, ma oggi a quest&#x27;ora siamo sotto ieri di 2 lead.</div>
   <div class="path "><b>Cosa faremo per migliorare le performance:</b> Setup corretto, monitorare. Se il calo orario prosegue anche domani, refresh leggero del visual senza toccare il targeting.</div>
 </div>
-<div class="card verde">
+<div class="card verde" data-name="open day - total lift - dr zuffada e nardi" data-color="verde">
   <div class="card-head">
     <span class="tag verde">VERDE</span>
     <div class="camp-name">Open Day - Total Lift - DR ZUFFADA E NARDI</div>
   </div>
   <div class="meta">Partita: 07/05/2026 · 2gg alla fine</div>
-  <div class="rationale">CPL 10,37 € vs media 10,58 €</div>
   <div class="meta">Lead OGGI alle 15:59: <b>0</b> (ieri stesso orario 2)</div>
   <div class="meta">Trend ultimi 3 giorni: <b>1,00</b> lead media giornaliera · Frequency 7gg: <b>1,19</b><span class="freq-badge freq-healthy">healthy</span></div>
   <div class="reading">Ieri CPL 10,37 €, in linea con la media storica di 10,58 €, ma oggi a quest&#x27;ora siamo sotto ieri di 2 lead.</div>
   <div class="path "><b>Cosa faremo per migliorare le performance:</b> Setup corretto, monitorare. Se il calo orario prosegue anche domani, refresh leggero del visual senza toccare il targeting.</div>
 </div>
-<div class="card verde">
+<div class="card verde" data-name="open day - total lift - dott. lo giudice" data-color="verde">
   <div class="card-head">
     <span class="tag verde">VERDE</span>
     <div class="camp-name">Open Day - Total Lift - DOTT. LO GIUDICE</div>
   </div>
   <div class="meta">Partita: 15/05/2026 · 10gg alla fine</div>
-  <div class="rationale">CPL 1,84 € vs media 2,74 €</div>
   <div class="meta">Lead OGGI alle 15:59: <b>3</b> (ieri stesso orario 7)</div>
   <div class="meta">Trend ultimi 3 giorni: <b>7,00</b> lead media giornaliera · Frequency 7gg: <b>1,68</b><span class="freq-badge freq-healthy">healthy</span></div>
   <div class="reading">Ieri CPL 1,84 €, in linea con la media storica di 2,74 €, ma oggi a quest&#x27;ora siamo sotto ieri di 4 lead.</div>
@@ -255,7 +304,73 @@ h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; margin: 4px 0; 
 </div>
 </div>
 
+<div class="empty-result" id="empty-result" style="display:none">Nessuna campagna corrisponde ai filtri attivi.</div>
 <div class="signature">© Francesco Maria Mosca 2026</div>
 </div>
+
+<script>
+/* MEDTECH_FILTER_JS_INJECTED */
+(function() {
+  "use strict";
+  const SEM_FILTERS = new Set();
+  let SEARCH_Q = "";
+  const searchInput = document.getElementById("search-input");
+  const clearBtn    = document.getElementById("search-clear");
+  const semGrid     = document.getElementById("sem-grid");
+  const cards       = Array.from(document.querySelectorAll(".cards .card"));
+  const cntEl       = document.getElementById("filter-count");
+  const emptyEl     = document.getElementById("empty-result");
+
+  function applyFilters() {
+    const q = SEARCH_Q.toLowerCase().trim();
+    let visible = 0;
+    for (const c of cards) {
+      const name = (c.dataset.name || "").toLowerCase();
+      const color = c.dataset.color || "";
+      const matchName  = !q || name.indexOf(q) !== -1;
+      const matchColor = SEM_FILTERS.size === 0 || SEM_FILTERS.has(color);
+      const show = matchName && matchColor;
+      c.style.display = show ? "" : "none";
+      if (show) visible++;
+    }
+    if (cntEl) {
+      if (q || SEM_FILTERS.size > 0) cntEl.textContent = visible + " su " + cards.length;
+      else cntEl.textContent = "";
+    }
+    if (emptyEl) emptyEl.style.display = (visible === 0 && cards.length > 0) ? "" : "none";
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener("input", () => {
+      SEARCH_Q = searchInput.value;
+      if (clearBtn) clearBtn.classList.toggle("hidden", !SEARCH_Q);
+      applyFilters();
+    });
+    searchInput.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") { searchInput.value = ""; SEARCH_Q = ""; clearBtn.classList.add("hidden"); applyFilters(); }
+    });
+  }
+  if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+      searchInput.value = ""; SEARCH_Q = ""; clearBtn.classList.add("hidden");
+      applyFilters(); searchInput.focus();
+    });
+  }
+
+  if (semGrid) {
+    semGrid.querySelectorAll(".kpi[data-filter]").forEach(el => {
+      el.addEventListener("click", () => {
+        const c = el.dataset.filter;
+        if (SEM_FILTERS.has(c)) SEM_FILTERS.delete(c);
+        else SEM_FILTERS.add(c);
+        el.classList.toggle("active-filter", SEM_FILTERS.has(c));
+        semGrid.classList.toggle("has-active", SEM_FILTERS.size > 0);
+        applyFilters();
+      });
+    });
+  }
+})();
+</script>
+
 </body>
 </html>

@@ -34,7 +34,7 @@ REPO_OWNER = "advfmosca"
 REPO_NAME = "med-tech-daily-check"
 PAGES_BASE_URL = f"https://{REPO_OWNER}.github.io/{REPO_NAME}"
 
-CUTOFF_LABEL_FMT = "{:02d}:59"
+CUTOFF_LABEL_FMT = "{:02d}:59"  # CUTOFF_LABEL_NOW_PATCH
 LABEL = {"rosso": "ROSSO", "giallo": "GIALLO", "verde": "VERDE", "nero": "NERO"}
 SEM_ORDER = {"rosso": 0, "nero": 1, "giallo": 2, "verde": 3}
 
@@ -327,7 +327,7 @@ def render_card(c, cutoff_label):
     <div class="camp-name">{esc(c['campaign'])}</div>
   </div>
   <div class="meta">Partita: {partita} · {giorni_text(c['giorni_mancanti'])}</div>
-  <div class="rationale">{esc(c['rationale'])}</div>
+  {}  # # RATIONALE_REMOVED
   <div class="meta">Lead OGGI alle {cutoff_label}: <b>{c['leads_oggi_so_far']}</b> (ieri stesso orario {c['leads_ieri_so_far']})</div>
   <div class="meta">Trend ultimi 3 giorni: <b>{fmt_num_it(c['trend_3g'])}</b> lead media giornaliera{freq_html}</div>
   <div class="reading">{esc(c['reading'])}</div>
@@ -492,6 +492,10 @@ def main():
 
     oggi = date.fromisoformat(args.oggi)
     cutoff_label = CUTOFF_LABEL_FMT.format(args.cutoff_hour)
+    # CUTOFF_LABEL_NOW_PATCH: override con orario reale di esecuzione
+    from datetime import datetime as _dt_now
+    _now = _dt_now.now()
+    cutoff_label = _now.strftime('%H:%M')
     template_path = args.template or os.path.join(args.repo_root, "_template", "med-tech-daily-template.html")
 
     with open(args.daily_json) as f:
