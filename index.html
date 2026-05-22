@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Med &amp; Tech — Andamento campagne Campagne</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MED & TECH — Archivio andamento campagne</title>
 <style>
 :root {
   color-scheme: light;
@@ -34,9 +34,9 @@ body {
 
 .brand-header { text-align: center; margin: 4px 0 14px; padding: 14px 18px; background: var(--bg-soft); border: 1px solid var(--border); border-radius: 12px; }
 h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 4px; }
-.subtitle { color: var(--text-muted); font-size: 12.5px; margin: 0 0 0; }
+.subtitle { color: var(--text-muted); font-size: 12.5px; margin: 0 0 18px; }
 
-/* KPI tiles top */
+/* KPI in alto */
 .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin-bottom: 14px; }
 .kpi { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 10px; padding: 13px 15px; min-width: 0; }
 .kpi .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
@@ -45,7 +45,7 @@ h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 4px
 .kpi.total .label { color: #b8b8bf; }
 .kpi.total .value { color: #fff; }
 
-/* Semafori grid 4 colonne — CLICCABILI come filtro */
+/* Conteggi semafori 4 colonne — CLICCABILI come filtro */
 .sem-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 14px; }
 .sem-grid .kpi { padding: 11px 13px; cursor: pointer; user-select: none; transition: transform .15s, box-shadow .15s, opacity .15s; }
 .sem-grid .kpi:hover { transform: translateY(-1px); box-shadow: 0 2px 6px rgba(0,0,0,.08); }
@@ -109,19 +109,6 @@ h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 4px
 .card-new.giallo .nc-hero { background: linear-gradient(180deg, #fffaf0 0%, #fff 100%); }
 .card-new.verde  .nc-hero { background: linear-gradient(180deg, #f0fdf4 0%, #fff 100%); }
 .card-new.nero   .nc-hero { background: linear-gradient(180deg, #f5f5f7 0%, #fff 100%); }
-.card-new .nc-status-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
-.card-new .nc-status { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; letter-spacing: 0.02em; padding: 4px 10px; border-radius: 999px; }
-.card-new.rosso  .nc-status { background: #fee2e2; color: #991b1b; }
-.card-new.giallo .nc-status { background: #ffedd5; color: #9a3412; }
-.card-new.verde  .nc-status { background: #d1fadf; color: #14532d; }
-.card-new.nero   .nc-status { background: #1a1a1a; color: #fff; }
-.card-new .nc-status .ico { font-size: 13px; }
-.card-new .nc-since { font-size: 11px; color: var(--text-muted); margin-left: auto; }
-.card-new .nc-name { font-size: 15px; font-weight: 700; line-height: 1.25; margin: 0; word-break: break-word; }
-.card-new .nc-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(105px, 1fr)); gap: 8px; padding: 0 16px 14px; }
-.card-new .client-btn { margin-left: auto; font-size: 11.5px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: #fff; border: 1px solid #d2d2d7; color: var(--text); text-decoration: none; transition: background .12s; }
-.card-new .client-btn:hover { background: var(--bg-soft); }
-
 .card-new .nc-chart-wrap { margin: 12px 16px; padding: 10px 12px; background: var(--bg-soft); border-radius: 10px; }
 .card-new .nc-chart-title { display: flex; justify-content: space-between; align-items: center; font-size: 10.5px; font-weight: 600; letter-spacing: 0.04em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px; flex-wrap: wrap; gap: 6px; }
 .card-new .nc-chart-legend { font-size: 10px; display: flex; gap: 8px; }
@@ -140,6 +127,26 @@ h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 4px
 .card-new .nc-day-kpis .dk-cell { background: #fff; border: 1px solid var(--border-soft); border-radius: 8px; padding: 7px 9px; text-align: center; }
 .card-new .nc-day-kpis .dk-lbl { font-size: 9.5px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
 .card-new .nc-day-kpis .dk-val { font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums; margin-top: 2px; }
+
+.card-new .nc-meta { margin: 8px 0 12px; padding: 10px 12px; background: var(--bg-soft); border-radius: 8px; }
+.card-new .nc-meta dl { margin: 0; display: grid; grid-template-columns: 1fr; gap: 8px; }
+@media (min-width: 640px) { .card-new .nc-meta dl { grid-template-columns: repeat(3, 1fr); gap: 12px; } }
+.card-new .nc-meta dt { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); margin-bottom: 2px; }
+.card-new .nc-meta dd { margin: 0; font-size: 12.5px; font-weight: 600; color: var(--text); }
+.card-new .nc-meta dd.placeholder { color: var(--text-dim); font-weight: 500; font-style: italic; }
+
+.card-new .nc-status-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+.card-new .client-btn { margin-left: auto; font-size: 11.5px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: #fff; border: 1px solid #d2d2d7; color: var(--text); text-decoration: none; transition: background .12s; }
+.card-new .client-btn:hover { background: var(--bg-soft); }
+.card-new .nc-status { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; letter-spacing: 0.02em; padding: 4px 10px; border-radius: 999px; }
+.card-new.rosso  .nc-status { background: #fee2e2; color: #991b1b; }
+.card-new.giallo .nc-status { background: #ffedd5; color: #9a3412; }
+.card-new.verde  .nc-status { background: #d1fadf; color: #14532d; }
+.card-new.nero   .nc-status { background: #1a1a1a; color: #fff; }
+.card-new .nc-status .ico { font-size: 13px; }
+.card-new .nc-since { font-size: 11px; color: var(--text-muted); margin-left: auto; }
+.card-new .nc-name { font-size: 15px; font-weight: 700; line-height: 1.25; margin: 0; word-break: break-word; }
+.card-new .nc-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(105px, 1fr)); gap: 8px; padding: 0 16px 14px; }
 .card-new .nc-kpi { background: var(--bg-soft); border-radius: 8px; padding: 8px 10px; }
 .card-new .nc-kpi .lbl { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
 .card-new .nc-kpi .val { font-size: 17px; font-weight: 800; color: #0f0f10; line-height: 1.1; margin-top: 2px; font-variant-numeric: tabular-nums; }
@@ -169,12 +176,24 @@ h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 4px
 .card-new details .det-content { padding: 6px 0 0; line-height: 1.55; }
 .card-new details .det-content b { color: var(--text); }
 
+/* === Visualizzazioni & Frequenza (introdotte 2026-05-22) === */
+.card-new .nc-kpi .freq-pill { display: inline-block; padding: 1px 7px; border-radius: 999px; font-size: 9.5px; font-weight: 700; letter-spacing: 0.04em; margin-top: 4px; text-transform: uppercase; }
+.card-new .nc-kpi .freq-pill.bassa     { background: #dbeafe; color: #1e3a8a; }
+.card-new .nc-kpi .freq-pill.ottimale  { background: #d1fadf; color: #14532d; }
+.card-new .nc-kpi .freq-pill.monitorare{ background: #ffedd5; color: #9a3412; }
+.card-new .nc-kpi .freq-pill.alta      { background: #fee2e2; color: #991b1b; }
+.card-new .nc-kpi .freq-pill.critica   { background: #1a1a1a; color: #fff; }
+.card-new .nc-freq { padding: 12px 16px 0; border-top: 1px solid var(--border-soft); margin-top: 12px; }
+.card-new .nc-freq .nc-story.rosso  { color: #991b1b; }
+.card-new .nc-freq .nc-story.giallo { color: #9a3412; }
+.card-new .nc-freq .nc-story.verde  { color: #14532d; }
+
 .legend { display: flex; flex-wrap: wrap; gap: 8px 14px; font-size: 12px; color: var(--text-muted); background: var(--bg-soft); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; margin-bottom: 18px; }
 .legend .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
-.dot-rosso  { background: var(--red); }
+.dot-rosso { background: var(--red); }
 .dot-giallo { background: var(--yellow); }
-.dot-verde  { background: var(--green); }
-.dot-nero   { background: var(--black); }
+.dot-verde { background: var(--green); }
+.dot-nero  { background: var(--black); }
 
 .cards { display: flex; flex-direction: column; gap: 12px; }
 .card { background: var(--bg-card); border: 1px solid var(--border); border-left-width: 4px; border-radius: 12px; padding: 14px 16px; }
@@ -190,149 +209,102 @@ h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 4px
 .tag.nero   { background: var(--black); }
 .camp-name { font-weight: 700; font-size: 14px; flex: 1; }
 .meta { color: var(--text-muted); font-size: 12.5px; margin-top: 6px; }
-.rationale { font-size: 13px; margin-top: 4px; }
-.reading { font-size: 12.5px; color: #2c2c2c; margin-top: 8px; line-height: 1.55; padding: 9px 11px; background: var(--bg-soft); border-radius: 8px; }
-.path { font-size: 12.5px; color: var(--text); margin-top: 6px; line-height: 1.55; background: var(--bg-soft); border-left: 3px solid #0b57d0; padding: 8px 12px; border-radius: 8px; }
-.path b { color: #0b57d0; font-weight: 700; }
-.path.urgent { border-left-color: var(--red); } .path.urgent b { color: var(--red); }
-.path.soft   { border-left-color: var(--green); } .path.soft   b { color: var(--green); }
-.freq-badge { display: inline-block; font-size: 10.5px; font-weight: 600; padding: 1px 7px; border-radius: 999px; margin-left: 4px; vertical-align: middle; }
-.freq-healthy { background: #d1fadf; color: #14532d; }
-.freq-monitor { background: var(--border); color: var(--text-muted); }
-.freq-alta    { background: #ffedd5; color: #9a3412; }
-.freq-critica { background: #fee2e2; color: #991b1b; }
-.empty { color: var(--text-dim); font-style: italic; padding: 16px 0; }
+.reason { font-size: 12.5px; color: #2c2c2c; margin-top: 8px; line-height: 1.55; padding: 9px 11px; background: var(--bg-soft); border-radius: 8px; }
+.r-cpl  { font-size: 12.5px; color: #2c2c2c; line-height: 1.55; margin-top: 8px; padding: 9px 11px; background: var(--bg-soft); border-radius: 8px; border-left: 3px solid #0866FF; }
+.r-perf { font-size: 12.5px; color: #2c2c2c; line-height: 1.55; margin-top: 8px; padding: 9px 11px; background: #fffaf0; border-radius: 8px; border-left: 3px solid var(--yellow); }
+.r-perf strong { color: #1c1c1e; }
 
 /* Index list */
-.section-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin: 0 0 10px; }
+.section-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin: 14px 0 10px; }
 .report-list { display: flex; flex-direction: column; gap: 4px; list-style: none; padding: 0; }
-.report-list a, .report-item a { display: flex; align-items: center; width: 100%; text-decoration: none; color: inherit; gap: 10px; }
-.report-item { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border-radius: 10px; text-decoration: none; color: var(--text); border: 1px solid var(--border); background: #fff; transition: background .15s, border-color .15s; }
-.report-item:hover { background: var(--bg-soft); border-color: #d2d2d7; }
-.report-item .day-name { font-weight: 600; font-size: 13.5px; }
-.report-item .day-counts { font-size: 12.5px; color: var(--text-muted); margin-left: 12px; font-variant-numeric: tabular-nums; }
-.report-item .day-counts .c-rosso  { color: var(--red);   font-weight: 700; }
-.report-item .day-counts .c-giallo { color: #b88a00;      font-weight: 700; }
-.report-item .day-counts .c-verde  { color: var(--green); font-weight: 700; }
-.report-item .day-counts .c-nero   { color: #444;         font-weight: 700; }
-.report-item .arrow { margin-left: auto; color: var(--text-dim); font-size: 18px; }
+.report-list a.report-item { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border-radius: 10px; text-decoration: none; color: var(--text); border: 1px solid var(--border); background: #fff; transition: background .15s, border-color .15s; }
+.report-list a.report-item:hover { background: var(--bg-soft); border-color: #d2d2d7; }
+.report-list .day-name { font-weight: 600; font-size: 13.5px; }
+.report-list .day-counts { font-size: 12.5px; color: var(--text-muted); margin-left: 12px; font-variant-numeric: tabular-nums; }
+.report-list .day-counts .c-rosso  { color: var(--red);   font-weight: 700; }
+.report-list .day-counts .c-giallo { color: #b88a00;      font-weight: 700; }
+.report-list .day-counts .c-verde  { color: var(--green); font-weight: 700; }
+.report-list .day-counts .c-nero   { color: #444;         font-weight: 700; }
+.report-list .arrow { margin-left: auto; color: var(--text-dim); font-size: 18px; }
 
 .signature { font-size: 11.5px; color: var(--text-dim); margin-top: 28px; padding-top: 14px; border-top: 1px solid var(--border-soft); text-align: center; letter-spacing: 0.02em; }
 </style>
 </head>
 <body>
-<div class=\"wrap\">
 <div class="wrap">
+  
   <div class="brand-header">
-  <h1>Med &amp; Tech — Andamento campagne Campagne</h1>
-  <p class="subtitle">Archivio storico giornaliero · campagne Meta Lead Ads · Open Day Total Lift / Total Sculpt</p>
-</div>
-  <div class="section-label">Report disponibili</div>
-  <ul class="report-list">
-    <li class="report-item">
-      <a href="med-tech-daily-2026-05-19.html">
-        <span class="day-name">Martedì 19 Maggio 2026</span>
-        <span class="day-counts"><span class="c-rosso">3R</span> · <span class="c-giallo">4G</span> · <span class="c-verde">5V</span> · <span class="c-nero">0N</span></span>
-        <span class="arrow">→</span>
-      </a>
-    </li>
-    <li class="report-item">
-      <a href="med-tech-daily-2026-05-18.html">
-        <span class="day-name">Lunedì 18 Maggio 2026</span>
-        <span class="day-counts"><span class="c-rosso">6R</span> · <span class="c-giallo">4G</span> · <span class="c-verde">3V</span> · <span class="c-nero">0N</span></span>
-        <span class="arrow">→</span>
-      </a>
-    </li>
-    <li class="report-item">
-      <a href="med-tech-daily-2026-05-17.html">
-        <span class="day-name">Domenica 17 Maggio 2026</span>
-        <span class="day-counts"><span class="c-rosso">7R</span> · <span class="c-giallo">4G</span> · <span class="c-verde">3V</span> · <span class="c-nero">0N</span></span>
-        <span class="arrow">→</span>
-      </a>
-    </li>
-    <li class="report-item">
-      <a href="med-tech-daily-2026-05-16.html">
-        <span class="day-name">Sabato 16 Maggio 2026</span>
-        <span class="day-counts"><span class="c-rosso">4R</span> · <span class="c-giallo">5G</span> · <span class="c-verde">4V</span> · <span class="c-nero">0N</span></span>
-        <span class="arrow">→</span>
-      </a>
-    </li>
-    <li class="report-item">
-      <a href="med-tech-daily-2026-05-15.html">
-        <span class="day-name">Venerdì 15 Maggio 2026</span>
-        <span class="day-counts"><span class="c-rosso">5R</span> · <span class="c-giallo">2G</span> · <span class="c-verde">4V</span> · <span class="c-nero">0N</span></span>
-        <span class="arrow">→</span>
-      </a>
-    </li>
-  </ul>
+    <h1>MED & TECH — Archivio andamento campagne</h1>
+    <p class="subtitle">Snapshot giornalieri · semaforica calcolata sul costo medio per contatto 3gg</p>
   </div>
-<div class="empty-result" id="empty-result" style="display:none">Nessuna campagna corrisponde ai filtri attivi.</div>
-<div class="signature">© Francesco Maria Mosca 2026</div>
+  <div class="section-label">Report disponibili</div>
+  <div class="report-list">
+    <a class="report-item" href="med-tech-daily-2026-05-21.html">
+      <span class="day-name">Giovedì 21 Maggio 2026</span>
+      <span class="day-counts">
+        <span class="c-rosso">3R</span> ·
+        <span class="c-giallo">0G</span> ·
+        <span class="c-verde">7V</span> ·
+        <span class="c-nero">0N</span>
+      </span>
+      <span class="arrow">→</span>
+    </a>    <a class="report-item" href="med-tech-daily-2026-05-20.html">
+      <span class="day-name">Mercoledì 20 Maggio 2026</span>
+      <span class="day-counts">
+        <span class="c-rosso">2R</span> ·
+        <span class="c-giallo">0G</span> ·
+        <span class="c-verde">9V</span> ·
+        <span class="c-nero">0N</span>
+      </span>
+      <span class="arrow">→</span>
+    </a>    <a class="report-item" href="med-tech-daily-2026-05-19.html">
+      <span class="day-name">Martedì 19 Maggio 2026</span>
+      <span class="day-counts">
+        <span class="c-rosso">1R</span> ·
+        <span class="c-giallo">0G</span> ·
+        <span class="c-verde">11V</span> ·
+        <span class="c-nero">0N</span>
+      </span>
+      <span class="arrow">→</span>
+    </a>    <a class="report-item" href="med-tech-daily-2026-05-18.html">
+      <span class="day-name">Lunedì 18 Maggio 2026</span>
+      <span class="day-counts">
+        <span class="c-rosso">0R</span> ·
+        <span class="c-giallo">0G</span> ·
+        <span class="c-verde">0V</span> ·
+        <span class="c-nero">0N</span>
+      </span>
+      <span class="arrow">→</span>
+    </a>    <a class="report-item" href="med-tech-daily-2026-05-17.html">
+      <span class="day-name">Domenica 17 Maggio 2026</span>
+      <span class="day-counts">
+        <span class="c-rosso">0R</span> ·
+        <span class="c-giallo">0G</span> ·
+        <span class="c-verde">0V</span> ·
+        <span class="c-nero">0N</span>
+      </span>
+      <span class="arrow">→</span>
+    </a>    <a class="report-item" href="med-tech-daily-2026-05-16.html">
+      <span class="day-name">Sabato 16 Maggio 2026</span>
+      <span class="day-counts">
+        <span class="c-rosso">0R</span> ·
+        <span class="c-giallo">0G</span> ·
+        <span class="c-verde">0V</span> ·
+        <span class="c-nero">0N</span>
+      </span>
+      <span class="arrow">→</span>
+    </a>    <a class="report-item" href="med-tech-daily-2026-05-15.html">
+      <span class="day-name">Venerdì 15 Maggio 2026</span>
+      <span class="day-counts">
+        <span class="c-rosso">0R</span> ·
+        <span class="c-giallo">0G</span> ·
+        <span class="c-verde">0V</span> ·
+        <span class="c-nero">0N</span>
+      </span>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+  <div class="signature">© Francesco Maria Mosca 2026</div>
 </div>
-
-<script>
-/* MEDTECH_FILTER_JS_INJECTED */
-(function() {
-  "use strict";
-  const SEM_FILTERS = new Set();
-  let SEARCH_Q = "";
-  const searchInput = document.getElementById("search-input");
-  const clearBtn    = document.getElementById("search-clear");
-  const semGrid     = document.getElementById("sem-grid");
-  const cards       = Array.from(document.querySelectorAll(".cards .card"));
-  const cntEl       = document.getElementById("filter-count");
-  const emptyEl     = document.getElementById("empty-result");
-
-  function applyFilters() {
-    const q = SEARCH_Q.toLowerCase().trim();
-    let visible = 0;
-    for (const c of cards) {
-      const name = (c.dataset.name || "").toLowerCase();
-      const color = c.dataset.color || "";
-      const matchName  = !q || name.indexOf(q) !== -1;
-      const matchColor = SEM_FILTERS.size === 0 || SEM_FILTERS.has(color);
-      const show = matchName && matchColor;
-      c.style.display = show ? "" : "none";
-      if (show) visible++;
-    }
-    if (cntEl) {
-      if (q || SEM_FILTERS.size > 0) cntEl.textContent = visible + " su " + cards.length;
-      else cntEl.textContent = "";
-    }
-    if (emptyEl) emptyEl.style.display = (visible === 0 && cards.length > 0) ? "" : "none";
-  }
-
-  if (searchInput) {
-    searchInput.addEventListener("input", () => {
-      SEARCH_Q = searchInput.value;
-      if (clearBtn) clearBtn.classList.toggle("hidden", !SEARCH_Q);
-      applyFilters();
-    });
-    searchInput.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") { searchInput.value = ""; SEARCH_Q = ""; clearBtn.classList.add("hidden"); applyFilters(); }
-    });
-  }
-  if (clearBtn) {
-    clearBtn.addEventListener("click", () => {
-      searchInput.value = ""; SEARCH_Q = ""; clearBtn.classList.add("hidden");
-      applyFilters(); searchInput.focus();
-    });
-  }
-
-  if (semGrid) {
-    semGrid.querySelectorAll(".kpi[data-filter]").forEach(el => {
-      el.addEventListener("click", () => {
-        const c = el.dataset.filter;
-        if (SEM_FILTERS.has(c)) SEM_FILTERS.delete(c);
-        else SEM_FILTERS.add(c);
-        el.classList.toggle("active-filter", SEM_FILTERS.has(c));
-        semGrid.classList.toggle("has-active", SEM_FILTERS.size > 0);
-        applyFilters();
-      });
-    });
-  }
-})();
-</script>
-
 </body>
 </html>
